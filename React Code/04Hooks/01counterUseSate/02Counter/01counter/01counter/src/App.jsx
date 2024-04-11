@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function App() {
-  let [count, setCount] = useState(10);
+  const [count, setCount] = useState(10);
 
   let addValue = () => {
     if (count < 50) {
