@@ -13,7 +13,7 @@
 
  ## How we track unmount of component?
  ```javascript
- 
+
  useEffect(()=>{
     console.log("counter mounted");
 
@@ -22,3 +22,33 @@
     }
  })
  ```  
+ // Empty  dependency arrays means -> whole component mount or unmount
+
+ // if dependency some values until that value get changed then the useEffect will word ( mount or mount)
+
+ ### Note
+ when we return any function from call back function of useEffect 
+
+
+ ```javascript
+ useEffect(()=>{
+    console.log("user Update Mount",counter)
+    return ()=>{
+        console.log("user Unmount return component".counter);
+    }
+ })
+
+
+ ```
+ ### output:
+ 
+ user Unmount return component 0  // here first unmount
+ user Update Mount 1 // here mounted
+ user Unmount return component 1  // here second unmount
+ user Update Mount 2 // here second mounted
+
+ ## Always return element first unmount and then call back function mount 
+
+Piyush Grag Ended
+
+Web dev Simplified Kyle
