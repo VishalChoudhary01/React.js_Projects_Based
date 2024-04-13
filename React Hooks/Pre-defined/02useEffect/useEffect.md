@@ -4,6 +4,12 @@
 3. Updation -> Where we update value / re -render on web just like using useState()
 4. unmounting -> when component invisible on screen after rendered on screen 
 
+## Shorthand for import and use
+```javascript
+    React.useEffect(()=>{
+
+    },[Dependency Array List])
+```
 ## mount when we refresh page component rendered.
 
 # useEffect
@@ -22,8 +28,32 @@
     }
  })
  ```  
- // Empty  dependency arrays means -> whole component mount or unmount
+ ## Empty  dependency arrays will not get any mount behaviour we need something for that depended value will effect on render or unmount
 
+```javascript
+
+import {useEffect, useState} from "react"
+function App() {
+const [count,setCount]=useState(1);
+useEffect(()=>{
+  console.log("render",Math.random());
+
+},[])
+
+
+function increase(){
+  return setCount(count+1);
+}
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button> 
+    </>
+  )
+}
+
+```
  // if dependency some values until that value get changed then the useEffect will word ( mount or mount)
 
  ### Note
@@ -51,4 +81,69 @@
 
 Piyush Grag Ended
 
+
 Web dev Simplified Kyle
+
+#### prefect example useEffect get change inner width on page 
+
+ 
+```javascript
+import React,{useState,useEffect} from "react"
+
+export default function App(){
+    const [windowWidth,setWindowWidth]= useState(window.innerWidth);
+
+    const HandleSize=()=>{
+        setWindowWidth(window.innerWidth)
+    }
+
+    useEffect(()=>{
+        window.addEventListener("resize",HandleSize)
+
+        // Clean up way for optimization
+        return ()=>{
+            window.removeEventListener("resize",handleSize)
+        }
+    },[])
+
+    return (
+        <div>{windowWidth}</div>
+    )
+} 
+
+```
+## we can use conditional statement for useEffect where we want to use
+
+```javascript
+
+import './App.css'
+import {useEffect, useState} from "react"
+function App() {
+const [count,setCount]=useState(1);
+
+
+
+useEffect(()=>{
+  if(count==20){
+
+    console.log("render",Math.random());
+  }
+
+},[count])
+
+
+function increase(){
+  return setCount(count+1);
+}
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button> 
+    </>
+  )
+}
+
+export default App
+
+```
