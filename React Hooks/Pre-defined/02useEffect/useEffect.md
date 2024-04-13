@@ -12,6 +12,13 @@
  useEffect take on call back function and second argument as dependency array list
 
  ## How we track unmount of component?
+ ```javascript
+ 
  useEffect(()=>{
-   
- },[])  
+    console.log("counter mounted");
+
+    return function(){
+        console.log("unmounted")
+    }
+ })
+ ```  
