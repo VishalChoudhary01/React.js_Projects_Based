@@ -147,3 +147,14 @@ function increase(){
 export default App
 
 ```
+# Note-> useEffect will run without dependency array but it choose all state for effect without " [] "
+if we dont want use we dont pass empty array otherwise its will not work
+
+Simple if you want to effect on all dependency variable or method
+just use like this:-
+
+### For all dependency
+```javascript
+useEffect(()=>{})
+ 
+```
